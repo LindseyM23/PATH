@@ -1,0 +1,38 @@
+<div class="page">
+  <div class="content">
+    @if (!loading) {
+      @if (reflection) {
+        <h1>{{ monthDate | date: 'MMMM yyyy' }}</h1>
+        <p class="subtitle">Here's how your month went.</p>
+
+        <app-card padding="lg">
+          <div class="summary-row">
+            <div class="summary-item">
+              <span class="summary-label">Salary</span>
+              <span class="summary-value">R{{ +reflection.salary_amount | number: '1.0-0' }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Allocated</span>
+              <span class="summary-value">R{{ +reflection.allocated_total | number: '1.0-0' }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Remaining</span>
+              <span class="summary-value">R{{ +reflection.remaining_amount | number: '1.0-0' }}</span>
+            </div>
+          </div>
+        </app-card>
+
+        @for (message of reflection.messages; track message) {
+          <app-card padding="md" class="message-card">{{ message }}</app-card>
+        }
+      } @else {
+        <h1>Monthly reflection</h1>
+        <app-card padding="lg">
+          <p class="empty-state">
+            Come back here once you've completed your first month to see how it went.
+          </p>
+        </app-card>
+      }
+    }
+  </div>
+</div>

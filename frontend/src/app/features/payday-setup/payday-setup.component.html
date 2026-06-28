@@ -1,0 +1,23 @@
+<div class="page">
+  <app-card padding="lg">
+    <h1>How much money came in?</h1>
+    <p class="subtitle">Enter your salary for this month. You can always change it later.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <app-input
+        label="This month's income"
+        type="number"
+        prefix="R"
+        placeholder="0.00"
+        formControlName="salary"
+        [error]="form.controls.salary.touched && form.controls.salary.invalid ? 'Enter a valid amount' : null"
+      />
+
+      @if (serverError) {
+        <p class="server-error">{{ serverError }}</p>
+      }
+
+      <app-button type="submit" [loading]="submitting">Continue</app-button>
+    </form>
+  </app-card>
+</div>

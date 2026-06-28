@@ -1,0 +1,41 @@
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-4);
+}
+
+app-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.subtitle {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.server-error {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-4);
+}
+
+.switch-link {
+  margin-top: var(--space-6);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+
+  a {
+    color: var(--color-primary-dark);
+    font-weight: var(--font-weight-medium);
+  }
+}

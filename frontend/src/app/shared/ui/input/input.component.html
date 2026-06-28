@@ -1,0 +1,20 @@
+@if (label) {
+  <label class="input-label">{{ label }}</label>
+}
+<div class="input-wrapper" [class.input-wrapper--error]="error">
+  @if (prefix) {
+    <span class="input-prefix">{{ prefix }}</span>
+  }
+  <input
+    [type]="type === 'number' ? 'text' : type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [value]="value ?? ''"
+    (input)="handleInput($any($event.target).value)"
+    (blur)="handleBlur()"
+    [attr.inputmode]="type === 'number' ? 'decimal' : null"
+  />
+</div>
+@if (error) {
+  <p class="input-error">{{ error }}</p>
+}

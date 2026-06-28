@@ -1,0 +1,49 @@
+// Light theme (default)
+:root {
+  --color-primary: #2bb673;
+  --color-primary-dark: #1f9c60;
+  --color-primary-soft: #e3f6ec;
+
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-text: #1c1e21;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+
+  --color-danger: #e0734f;
+  --color-danger-soft: #fbe9e2;
+}
+
+// Explicit dark theme (toggled by ThemeService via [data-theme="dark"] on <html>)
+:root[data-theme='dark'] {
+  --color-primary: #34d399;
+  --color-primary-dark: #10b981;
+  --color-primary-soft: #103a2a;
+
+  --color-bg: #14161a;
+  --color-surface: #1e2126;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-border: #2c2f36;
+
+  --color-danger: #f0876a;
+  --color-danger-soft: #3a2420;
+}
+
+// System-preference fallback, only when the user hasn't explicitly chosen a theme
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
+    --color-primary: #34d399;
+    --color-primary-dark: #10b981;
+    --color-primary-soft: #103a2a;
+
+    --color-bg: #14161a;
+    --color-surface: #1e2126;
+    --color-text: #f3f4f6;
+    --color-text-muted: #9ca3af;
+    --color-border: #2c2f36;
+
+    --color-danger: #f0876a;
+    --color-danger-soft: #3a2420;
+  }
+}

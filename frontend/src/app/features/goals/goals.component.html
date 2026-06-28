@@ -1,0 +1,66 @@
+<div class="page">
+  <div class="content">
+    <h1>Your goals</h1>
+    <p class="subtitle">The life you're building toward.</p>
+
+    @if (!loading) {
+      @for (goal of goals; track goal.id) {
+        <app-card padding="md" class="goal-card">
+          <div class="goal-header">
+            <span class="goal-name">{{ goal.icon }} {{ goal.name }}</span>
+            <button class="remove-btn" type="button" (click)="removeGoal(goal.id)" aria-label="Remove goal">✕</button>
+          </div>
+
+          <app-progress-bar [value]="+goal.current_amount" [max]="+goal.target_amount" />
+
+          <div class="goal-amounts">
+            <span>R{{ +goal.current_amount | number: '1.0-0' }} of R{{ +goal.target_amount | number: '1.0-0' }}</span>
+            <span class="goal-percent">{{ +goal.progress_percent | number: '1.0-0' }}%</span>
+          </div>
+
+          @if (openContributeFor === goal.id) {
+            <form class="contribute-form" [formGroup]="contributeForm" (ngSubmit)="submitContribute(goal.id)">
+              <app-input type="number" prefix="R" placeholder="0.00" formControlName="amount" />
+              <div class="contribute-actions">
+                <app-button variant="ghost" type="button" (click)="closeContribute()">Cancel</app-button>
+                <app-button type="submit" [loading]="contributeSubmitting">Add</app-button>
+              </div>
+            </form>
+          } @else {
+            <app-button variant="secondary" type="button" (click)="openContribute(goal.id)">
+              Add money
+            </app-button>
+          }
+        </app-card>
+      } @empty {
+        <p class="empty-state">No goals yet — what are you working toward?</p>
+      }
+    }
+
+    <app-card padding="md" class="new-goal-card">
+      <p class="new-goal-title">Start a new goal</p>
+      <form [formGroup]="createForm" (ngSubmit)="createGoal()">
+        <app-input
+          label="What's it for?"
+          placeholder="Emergency Fund"
+          formControlName="name"
+          [error]="createForm.controls.name.touched && createForm.controls.name.invalid ? 'Give your goal a name' : null"
+        />
+        <app-input
+          label="Target amount"
+          type="number"
+          prefix="R"
+          placeholder="0.00"
+          formControlName="targetAmount"
+          [error]="createForm.controls.targetAmount.touched && createForm.controls.targetAmount.invalid ? 'Enter a valid amount' : null"
+        />
+
+        @if (serverError) {
+          <p class="server-error">{{ serverError }}</p>
+        }
+
+        <app-button type="submit" [loading]="creating">Create goal</app-button>
+      </form>
+    </app-card>
+  </div>
+</div>

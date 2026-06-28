@@ -1,0 +1,48 @@
+<div class="page">
+  @if (!loading) {
+    <div class="content">
+      <app-card padding="lg" class="summary">
+        <h1>Where should this go?</h1>
+        <p class="subtitle">Allocate your salary once — no need to track every little expense after this.</p>
+
+        <div class="summary-row">
+          <div class="summary-item">
+            <span class="summary-label">Salary</span>
+            <span class="summary-value">R{{ salary | number: '1.0-0' }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Allocated</span>
+            <span class="summary-value">R{{ allocatedTotal | number: '1.0-0' }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Remaining</span>
+            <span class="summary-value">R{{ remaining | number: '1.0-0' }}</span>
+          </div>
+        </div>
+      </app-card>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        @for (section of sections; track section.label) {
+          <app-card padding="md" class="group-card">
+            <h2>{{ section.label }}</h2>
+            @for (allocation of section.allocations; track allocation.category_id) {
+              <app-input
+                [label]="(allocation.icon ?? '') + ' ' + allocation.category_name"
+                type="number"
+                prefix="R"
+                placeholder="0.00"
+                [formControlName]="allocation.category_id"
+              />
+            }
+          </app-card>
+        }
+
+        @if (serverError) {
+          <p class="server-error">{{ serverError }}</p>
+        }
+
+        <app-button type="submit" [loading]="submitting">Save my plan</app-button>
+      </form>
+    </div>
+  }
+</div>

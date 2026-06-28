@@ -1,0 +1,32 @@
+<div class="auth-page">
+  <app-card padding="lg">
+    <h1>Let's get you started</h1>
+    <p class="subtitle">Know where your money is taking you.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <app-input label="What should we call you?" placeholder="Lindsey" formControlName="displayName" />
+      <app-input
+        label="Email"
+        type="email"
+        placeholder="you@example.com"
+        formControlName="email"
+        [error]="form.controls.email.touched && form.controls.email.invalid ? 'Please enter a valid email' : null"
+      />
+      <app-input
+        label="Password"
+        type="password"
+        placeholder="At least 8 characters"
+        formControlName="password"
+        [error]="form.controls.password.touched && form.controls.password.invalid ? 'Password must be at least 8 characters' : null"
+      />
+
+      @if (serverError) {
+        <p class="server-error">{{ serverError }}</p>
+      }
+
+      <app-button type="submit" [loading]="submitting">Create my account</app-button>
+    </form>
+
+    <p class="switch-link">Already have an account? <a routerLink="/login">Log in</a></p>
+  </app-card>
+</div>

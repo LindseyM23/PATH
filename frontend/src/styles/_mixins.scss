@@ -1,0 +1,10 @@
+@mixin card-surface {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+@mixin focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
