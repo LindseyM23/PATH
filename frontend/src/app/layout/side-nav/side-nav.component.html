@@ -1,0 +1,17 @@
+<nav class="side-nav" [class.side-nav--open]="open">
+  <ul class="nav-list">
+    @for (link of links; track link.path) {
+      <li>
+        <a [routerLink]="link.path" routerLinkActive="active" class="nav-link" (click)="closeNav.emit()">
+          <ng-icon [name]="link.icon" size="20" />
+          <span>{{ link.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+
+  <button class="nav-link logout-link" type="button" (click)="logout()">
+    <ng-icon name="lucideLogOut" size="20" />
+    <span>Log out</span>
+  </button>
+</nav>

@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.brand {
+  display: inline-block;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  letter-spacing: 0.04em;
+
+  &--sm {
+    font-size: var(--font-size-md);
+  }
+}
+
+.brand-tagline {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}

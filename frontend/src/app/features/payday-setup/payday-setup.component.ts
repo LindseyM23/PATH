@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
 import { CardComponent } from '../../shared/ui/card/card.component';
 import { InputComponent } from '../../shared/ui/input/input.component';
+import { BrandComponent } from '../../shared/ui/brand/brand.component';
 import { PlanService } from '../../core/services/plan.service';
 
 @Component({
   selector: 'app-payday-setup',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent, CardComponent, InputComponent],
+  imports: [ReactiveFormsModule, ButtonComponent, CardComponent, InputComponent, BrandComponent],
   templateUrl: './payday-setup.component.html',
   styleUrl: './payday-setup.component.scss',
 })

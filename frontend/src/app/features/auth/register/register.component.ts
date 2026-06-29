@@ -5,12 +5,20 @@ import { Router, RouterLink } from '@angular/router';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
 import { CardComponent } from '../../../shared/ui/card/card.component';
 import { InputComponent } from '../../../shared/ui/input/input.component';
+import { BrandComponent } from '../../../shared/ui/brand/brand.component';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, ButtonComponent, CardComponent, InputComponent],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    ButtonComponent,
+    CardComponent,
+    InputComponent,
+    BrandComponent,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })

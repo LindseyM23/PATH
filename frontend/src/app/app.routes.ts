@@ -20,29 +20,32 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'monthly-planning',
-    loadComponent: () =>
-      import('./features/monthly-planning/monthly-planning.component').then(
-        (m) => m.MonthlyPlanningComponent,
-      ),
+    path: '',
+    loadComponent: () => import('./layout/shell/shell.component').then((m) => m.ShellComponent),
     canActivate: [authGuard],
-  },
-  {
-    path: 'dashboard',
-    loadComponent: () =>
-      import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
-    canActivate: [authGuard],
-  },
-  {
-    path: 'goals',
-    loadComponent: () => import('./features/goals/goals.component').then((m) => m.GoalsComponent),
-    canActivate: [authGuard],
-  },
-  {
-    path: 'reflection',
-    loadComponent: () =>
-      import('./features/reflection/reflection.component').then((m) => m.ReflectionComponent),
-    canActivate: [authGuard],
+    children: [
+      {
+        path: 'monthly-planning',
+        loadComponent: () =>
+          import('./features/monthly-planning/monthly-planning.component').then(
+            (m) => m.MonthlyPlanningComponent,
+          ),
+      },
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+      },
+      {
+        path: 'goals',
+        loadComponent: () => import('./features/goals/goals.component').then((m) => m.GoalsComponent),
+      },
+      {
+        path: 'reflection',
+        loadComponent: () =>
+          import('./features/reflection/reflection.component').then((m) => m.ReflectionComponent),
+      },
+    ],
   },
   { path: '**', redirectTo: 'login' },
 ];

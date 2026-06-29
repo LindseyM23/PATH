@@ -2,6 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgIcon } from '@ng-icons/core';
 import { forkJoin } from 'rxjs';
 
 import { ButtonComponent } from '../../shared/ui/button/button.component';
@@ -20,7 +21,7 @@ interface CategoryGroupSection {
 @Component({
   selector: 'app-monthly-planning',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent, CardComponent, InputComponent, DecimalPipe],
+  imports: [ReactiveFormsModule, ButtonComponent, CardComponent, InputComponent, DecimalPipe, NgIcon],
   templateUrl: './monthly-planning.component.html',
   styleUrl: './monthly-planning.component.scss',
 })

@@ -6,7 +6,7 @@
     <span class="input-prefix">{{ prefix }}</span>
   }
   <input
-    [type]="type === 'number' ? 'text' : type"
+    [type]="effectiveType"
     [placeholder]="placeholder"
     [disabled]="disabled"
     [value]="value ?? ''"
@@ -14,6 +14,16 @@
     (blur)="handleBlur()"
     [attr.inputmode]="type === 'number' ? 'decimal' : null"
   />
+  @if (type === 'password') {
+    <button
+      type="button"
+      class="input-visibility-toggle"
+      (click)="toggleShowPassword()"
+      [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+    >
+      <ng-icon [name]="showPassword ? 'lucideEyeOff' : 'lucideEye'" size="18" />
+    </button>
+  }
 </div>
 @if (error) {
   <p class="input-error">{{ error }}</p>

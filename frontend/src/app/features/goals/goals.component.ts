@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIcon } from '@ng-icons/core';
 
 import { ButtonComponent } from '../../shared/ui/button/button.component';
 import { CardComponent } from '../../shared/ui/card/card.component';
@@ -19,6 +20,7 @@ import { GoalService } from '../../core/services/goal.service';
     InputComponent,
     ProgressBarComponent,
     DecimalPipe,
+    NgIcon,
   ],
   templateUrl: './goals.component.html',
   styleUrl: './goals.component.scss',

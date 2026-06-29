@@ -45,7 +45,7 @@
             @for (group of categoryOptionGroups; track group.label) {
               <optgroup [label]="group.label">
                 @for (category of group.categories; track category.id) {
-                  <option [value]="category.id">{{ category.icon }} {{ category.name }}</option>
+                  <option [value]="category.id">{{ category.name }}</option>
                 }
               </optgroup>
             }

@@ -1,12 +1,13 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgIcon } from '@ng-icons/core';
 
 export type InputType = 'text' | 'email' | 'password' | 'number';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIcon],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   providers: [
@@ -26,6 +27,17 @@ export class InputComponent implements ControlValueAccessor {
 
   value: string | number | null = null;
   disabled = false;
+  showPassword = false;
+
+  get effectiveType(): string {
+    if (this.type === 'number') return 'text';
+    if (this.type === 'password') return this.showPassword ? 'text' : 'password';
+    return this.type;
+  }
+
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
+  }
 
   private onChange: (value: string | number | null) => void = () => {};
   private onTouched: () => void = () => {};

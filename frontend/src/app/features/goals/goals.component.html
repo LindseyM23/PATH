@@ -7,8 +7,13 @@
       @for (goal of goals; track goal.id) {
         <app-card padding="md" class="goal-card">
           <div class="goal-header">
-            <span class="goal-name">{{ goal.icon }} {{ goal.name }}</span>
-            <button class="remove-btn" type="button" (click)="removeGoal(goal.id)" aria-label="Remove goal">✕</button>
+            <span class="goal-name">
+              <ng-icon [name]="goal.icon ?? 'lucideTarget'" size="18" />
+              {{ goal.name }}
+            </span>
+            <button class="remove-btn" type="button" (click)="removeGoal(goal.id)" aria-label="Remove goal">
+              <ng-icon name="lucideX" size="16" />
+            </button>
           </div>
 
           <app-progress-bar [value]="+goal.current_amount" [max]="+goal.target_amount" />

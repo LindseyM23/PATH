@@ -1,7 +1,6 @@
 .page {
   display: flex;
   justify-content: center;
-  padding: var(--space-4);
 }
 
 .content {
@@ -11,6 +10,20 @@
   flex-direction: column;
   gap: var(--space-4);
   padding-bottom: var(--space-8);
+
+  @media (min-width: 768px) {
+    max-width: 640px;
+  }
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .summary {

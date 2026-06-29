@@ -1,0 +1,17 @@
+<header class="app-header">
+  <button class="icon-btn nav-toggle" type="button" (click)="toggleNav.emit()" aria-label="Toggle navigation">
+    <ng-icon name="lucideMenu" size="22" />
+  </button>
+
+  <app-brand size="sm" />
+
+  <span class="spacer"></span>
+
+  <button class="icon-btn" type="button" (click)="toggleTheme()" aria-label="Toggle dark mode">
+    @if (isDark$ | async) {
+      <ng-icon name="lucideSun" size="20" />
+    } @else {
+      <ng-icon name="lucideMoon" size="20" />
+    }
+  </button>
+</header>

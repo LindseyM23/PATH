@@ -26,13 +26,11 @@
           <app-card padding="md" class="group-card">
             <h2>{{ section.label }}</h2>
             @for (allocation of section.allocations; track allocation.category_id) {
-              <app-input
-                [label]="(allocation.icon ?? '') + ' ' + allocation.category_name"
-                type="number"
-                prefix="R"
-                placeholder="0.00"
-                [formControlName]="allocation.category_id"
-              />
+              <div class="category-row">
+                <ng-icon [name]="allocation.icon ?? 'lucideTag'" size="18" />
+                <span>{{ allocation.category_name }}</span>
+              </div>
+              <app-input type="number" prefix="R" placeholder="0.00" [formControlName]="allocation.category_id" />
             }
           </app-card>
         }

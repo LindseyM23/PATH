@@ -1,9 +1,14 @@
 .page {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: var(--space-4);
+}
+
+.auth-brand {
+  margin-bottom: var(--space-5);
 }
 
 app-card {

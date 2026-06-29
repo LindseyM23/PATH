@@ -1,14 +1,15 @@
 .page {
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: var(--space-4);
 }
 
 app-card {
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
+
+  @media (min-width: 768px) {
+    max-width: 640px;
+  }
 }
 
 .eyebrow-row {

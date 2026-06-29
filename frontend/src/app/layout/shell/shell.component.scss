@@ -1,0 +1,29 @@
+.shell {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.shell-body {
+  display: flex;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 60px 0 0 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.shell-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-4);
+
+  @media (min-width: 768px) {
+    padding: var(--space-6);
+  }
+}
